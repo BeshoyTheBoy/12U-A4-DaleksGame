@@ -1,6 +1,7 @@
 
-/** This class models the Doctor in the game. A Doctor has
- *  a position and can move to a new position.
+/**
+ * This class models the Doctor in the game. A Doctor has a position and can
+ * move to a new position.
  */
 public class Doctor {
 
@@ -13,7 +14,8 @@ public class Doctor {
      * @param theCol The column this Doctor starts at.
      */
     public Doctor(int theRow, int theCol) {
-
+        this.row = theRow;
+        this.col = theCol;
     }
 
     /**
@@ -28,7 +30,31 @@ public class Doctor {
      * @param newCol The column the player clicked on.
      */
     public void move(int newRow, int newCol) {
+        //find the difference between previous and current row
+        int diffRow = this.row - newRow;
+        int diffCol = this.col - newCol;
+        //if difference is negative, turn it positive to be able to compare
+        if (diffRow < 0) {
+            diffRow = diffRow * -1;
+        }
+        if (diffCol < 0) {
+            diffCol = diffCol * -1;
+        }
 
+        //if same position, stay put
+        if (diffRow == 0 && diffCol == 0) {
+            //same coordinates
+            this.row = newRow;
+            this.col = newCol;
+            //if square surrounding doctor, move
+        } else if (diffRow == 1 && diffCol == 1) {
+            this.row = newRow;
+            this.col = newCol;
+        } //else teleport doctor using math.random
+        else {
+            this.row = (int) (Math.random() * 12);
+            this.col = (int) (Math.random() * 12);
+        }
     }
 
     /**
@@ -37,7 +63,7 @@ public class Doctor {
      * @return This Doctor's row.
      */
     public int getRow() {
-
+        return this.row;
     }
 
     /**
@@ -46,7 +72,6 @@ public class Doctor {
      * @return This Doctor's column.
      */
     public int getCol() {
-
+        return this.col;
     }
-
 }

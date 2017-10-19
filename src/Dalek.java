@@ -1,6 +1,7 @@
 
-/** This class models a Delek in the game. A Delek has
- *  a position and can advance towards the Doctor.
+/**
+ * This class models a Delek in the game. A Delek has a position and can advance
+ * towards the Doctor.
  */
 public class Dalek {
 
@@ -14,7 +15,10 @@ public class Dalek {
      * @param theCol The column this Dalek starts at.
      */
     public Dalek(int theRow, int theCol) {
+        this.row = theRow;
+        this.col = theCol;
 
+        this.hasCrashed = false;
     }
 
     /**
@@ -26,7 +30,6 @@ public class Dalek {
      * @param doc The Doctor to move towards.
      */
     public void advanceTowards(Doctor doc) {
-
     }
 
     /**
@@ -35,7 +38,7 @@ public class Dalek {
      * @return This Dalek's row.
      */
     public int getRow() {
-
+        return this.row;
     }
 
     /**
@@ -44,14 +47,14 @@ public class Dalek {
      * @return This Dalek's column.
      */
     public int getCol() {
-
+        return this.col;
     }
 
     /**
      * Sets the Dalek to be in a crashed state.
      */
     public void crash() {
-
+        this.hasCrashed = true;
     }
 
     /**
@@ -60,7 +63,12 @@ public class Dalek {
      * @return true if this Dalek has crashed, false otherwise
      */
     public boolean hasCrashed() {
-
+        //if dalek crashed return true
+        if (this.hasCrashed == true) {
+            return true;
+            //if not, return false
+        } else {
+            return false;
+        }
     }
-
 }
