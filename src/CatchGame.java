@@ -56,6 +56,21 @@ public class CatchGame {
             //put peg where doctor moved
             board.putPeg(Color.GREEN, doctor.getRow(), doctor.getCol());
             
+            //remove dalek pegs
+            board.removePeg(dalek1.getRow(), dalek1.getCol());
+            board.removePeg(dalek2.getRow(), dalek2.getCol());
+            board.removePeg(dalek3.getRow(), dalek3.getCol());
+            
+            //move daleks towards doctor
+            dalek1.advanceTowards(doctor);
+            dalek2.advanceTowards(doctor);
+            dalek3.advanceTowards(doctor);
+            
+            //put new dalek pegs down
+            board.putPeg(Color.BLACK, dalek1.getRow(), dalek1.getCol());
+            board.putPeg(Color.BLACK, dalek2.getRow(), dalek2.getCol());
+            board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
+            
         }
     }
 }
