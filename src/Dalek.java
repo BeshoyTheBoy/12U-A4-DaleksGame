@@ -30,27 +30,35 @@ public class Dalek {
      * @param doc The Doctor to move towards.
      */
     public void advanceTowards(Doctor doc) {
-            // if the dalek's row is bigger than the doctor's, subtract by 1 to get closer
-            if (this.row > doc.getRow()) {
-                this.row = this.row - 1;
-            } else {
-                this.row = this.row + 1;
-            }
+        //find the difference between previous and current row
+        int diffRow = this.row - doc.getRow();
+        int diffCol = this.col - doc.getCol();
 
-            // if the dalek's row is bigger than the doctor's, subtract by 1 to get closer
-            if (this.col > doc.getCol()) {
-                this.col = this.col - 1;
-            } else {
-                this.col = this.col + 1;
-            }
-
-            // if the dalek's coordinates are the same as the doctor's
-            if (this.row == doc.getRow() && this.col == doc.getCol()) {
-                //set crash to true
-                crash();
-            }
+        // if diagonal
+        if(Math.abs(diffRow) == 1 && Math.abs(diffCol) == 1){
+            this.row = this.row - 1;
+            this.col = this.col - 1;
         }
-    
+        // if the dalek's row is bigger than the doctor's, subtract by 1 to get closer
+        if (this.row > doc.getRow()) {
+            this.row = this.row - 1;
+        } else {
+            this.row = this.row + 1;
+        }
+
+        // if the dalek's row is bigger than the doctor's, subtract by 1 to get closer
+        if (this.col > doc.getCol()) {
+            this.col = this.col - 1;
+        } else {
+            this.col = this.col + 1;
+        }
+
+        // if the dalek's coordinates are the same as the doctor's
+        if (this.row == doc.getRow() && this.col == doc.getCol()) {
+            //set crash to true
+            crash();
+        }
+    }
 
     /**
      * Returns the row of this Dalek.
