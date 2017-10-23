@@ -32,7 +32,7 @@ public class Doctor {
     public void move(int newRow, int newCol) {
         //find the difference between previous and current row
         int diffRow = this.row - newRow;
-        int diffCol = this.col - newCol;       
+        int diffCol = this.col - newCol;
 
         //if same position, stay put
         if (diffRow == 0 && diffCol == 0) {
@@ -40,7 +40,9 @@ public class Doctor {
             this.row = newRow;
             this.col = newCol;
             //if square surrounding doctor, move
-        } else if (Math.abs(diffRow)== 1 && Math.abs(diffCol) == 1) {
+        } else if (Math.abs(diffRow) == 1 && Math.abs(diffCol) == 1 || 
+                   Math.abs(diffRow) == 0 && Math.abs(diffCol) == 1 || 
+                   Math.abs(diffRow) == 1 && Math.abs(diffCol) == 0) {
             this.row = newRow;
             this.col = newCol;
         } //else teleport doctor using math.random
