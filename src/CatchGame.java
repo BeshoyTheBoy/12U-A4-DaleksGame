@@ -71,6 +71,7 @@ public class CatchGame {
             board.putPeg(Color.BLACK, dalek2.getRow(), dalek2.getCol());
             board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
             
+            //If 2 daleks crash
         }
     }
 }

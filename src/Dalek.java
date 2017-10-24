@@ -35,22 +35,26 @@ public class Dalek {
         int diffCol = this.col - doc.getCol();
 
         // if diagonal
-        if(Math.abs(diffRow) == 1 && Math.abs(diffCol) == 1){
-            this.row = this.row - 1;
-            this.col = this.col - 1;
+        if (Math.abs(diffRow) == 1 && Math.abs(diffCol) == 1) {
+            this.row = doc.getRow();
+            this.col = doc.getCol();
         }
         // if the dalek's row is bigger than the doctor's, subtract by 1 to get closer
         if (this.row > doc.getRow()) {
             this.row = this.row - 1;
-        } else {
+        } else if (this.row < doc.getRow()) {
             this.row = this.row + 1;
+        } else {
+            this.row = doc.getRow();
         }
 
         // if the dalek's row is bigger than the doctor's, subtract by 1 to get closer
         if (this.col > doc.getCol()) {
             this.col = this.col - 1;
-        } else {
+        } else if (this.col < doc.getCol()) {
             this.col = this.col + 1;
+        } else {
+            this.col = doc.getCol();
         }
 
         // if the dalek's coordinates are the same as the doctor's
