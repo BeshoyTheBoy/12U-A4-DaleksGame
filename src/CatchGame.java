@@ -112,6 +112,9 @@ public class CatchGame {
                 board.removePeg(dalek2.getRow(), dalek2.getCol());
                 //make crash site red
                 board.putPeg(Color.RED,dalek1.getRow(), dalek1.getCol());
+                board.putPeg(Color.RED,dalek2.getRow(), dalek2.getCol());
+                dalek1.crash();
+                dalek2.crash();
             }
             
              if (dalek1.getRow() == dalek3.getRow() && dalek1.getCol() == dalek3.getCol()) {
@@ -120,6 +123,9 @@ public class CatchGame {
                 board.removePeg(dalek3.getRow(), dalek3.getCol());
                 //make crash site red
                 board.putPeg(Color.RED,dalek1.getRow(), dalek1.getCol());
+                board.putPeg(Color.RED,dalek3.getRow(), dalek3.getCol());
+                dalek1.crash();
+                dalek3.crash();
             }
              
               if (dalek3.getRow() == dalek2.getRow() && dalek3.getCol() == dalek2.getCol()) {
@@ -128,6 +134,9 @@ public class CatchGame {
                 board.removePeg(dalek2.getRow(), dalek2.getCol());
                 //make crash site red
                 board.putPeg(Color.RED,dalek3.getRow(), dalek3.getCol());
+                board.putPeg(Color.RED,dalek2.getRow(), dalek2.getCol());
+                dalek3.crash();
+                dalek2.crash();
             }
         }
     }
