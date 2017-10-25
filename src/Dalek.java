@@ -30,7 +30,6 @@ public class Dalek {
      * @param doc The Doctor to move towards.
      */
     public void advanceTowards(Doctor doc) {
-        //run while dalek has not crashed
         if (this.hasCrashed == false) {
             // if the dalek's row is bigger than the doctor's, subtract by 1 to get closer
             if (this.row > doc.getRow()) {
@@ -55,6 +54,7 @@ public class Dalek {
                 //set crash to true
                 crash();
             }
+
         }
     }
 

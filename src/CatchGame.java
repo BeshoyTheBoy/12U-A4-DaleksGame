@@ -56,27 +56,40 @@ public class CatchGame {
             doctor.move(clickRow, clickCol);
             //put peg where doctor moved
             board.putPeg(Color.GREEN, doctor.getRow(), doctor.getCol());
-            
+
+            //MOVE DALEK 1
             //remove dalek pegs
             board.removePeg(dalek1.getRow(), dalek1.getCol());
-            board.removePeg(dalek2.getRow(), dalek2.getCol());
-            board.removePeg(dalek3.getRow(), dalek3.getCol());
-
-            //move daleks towards doctor
+            //move dalek towards doctor
             dalek1.advanceTowards(doctor);
-            dalek2.advanceTowards(doctor);
-            dalek3.advanceTowards(doctor);
-
             //put new dalek pegs down
             board.putPeg(Color.BLACK, dalek1.getRow(), dalek1.getCol());
+
+
+            //MOVE DALEK 2
+            //remove dalek pegs
+            board.removePeg(dalek2.getRow(), dalek2.getCol());
+            //move dalek towards doctor
+            dalek2.advanceTowards(doctor);
+            //put new dalek pegs down
             board.putPeg(Color.BLACK, dalek2.getRow(), dalek2.getCol());
+
+
+            //MOVE DALEK 3
+            //remove dalek pegs
+            board.removePeg(dalek3.getRow(), dalek3.getCol());
+            //move dalek towards doctor
+            dalek3.advanceTowards(doctor);
+            //put new dalek pegs down
             board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
+
+
 
             //  *** DALEKS CRASH WITH EACH OTHER ***
             if (dalek1.getRow() == dalek2.getRow() && dalek1.getCol() == dalek2.getCol()) {
                 //make crash site red
                 board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
-                
+
                 dalek1.crash();
                 dalek2.crash();
             }
@@ -84,7 +97,7 @@ public class CatchGame {
             if (dalek1.getRow() == dalek3.getRow() && dalek1.getCol() == dalek3.getCol()) {
                 //make crash site red
                 board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
-                
+
                 dalek1.crash();
                 dalek3.crash();
             }
@@ -92,7 +105,7 @@ public class CatchGame {
             if (dalek3.getRow() == dalek2.getRow() && dalek3.getCol() == dalek2.getCol()) {
                 //make crash site red
                 board.putPeg(Color.RED, dalek3.getRow(), dalek3.getCol());
-                
+
                 dalek3.crash();
                 dalek2.crash();
             }
