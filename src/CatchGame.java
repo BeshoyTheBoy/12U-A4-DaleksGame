@@ -31,6 +31,7 @@ public class CatchGame {
         this.dalek2 = dalek2;
         this.dalek3 = dalek3;
         this.doctor = doctor;
+
     }
 
     /**
@@ -45,6 +46,31 @@ public class CatchGame {
             board.putPeg(Color.BLACK, dalek1.getRow(), dalek1.getCol());
             board.putPeg(Color.BLACK, dalek2.getRow(), dalek2.getCol());
             board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
+            
+            //  *** DALEKS CRASH WITH EACH OTHER ***
+            if (dalek1.getRow() == dalek2.getRow() && dalek1.getCol() == dalek2.getCol()) {
+                //make crash site red
+                board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
+
+                dalek1.crash();
+                dalek2.crash();
+            }
+
+            if (dalek1.getRow() == dalek3.getRow() && dalek1.getCol() == dalek3.getCol()) {
+                //make crash site red
+                board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
+
+                dalek1.crash();
+                dalek3.crash();
+            }
+
+            if (dalek3.getRow() == dalek2.getRow() && dalek3.getCol() == dalek2.getCol()) {
+                //make crash site red
+                board.putPeg(Color.RED, dalek3.getRow(), dalek3.getCol());
+
+                dalek3.crash();
+                dalek2.crash();
+            }
 
             //register clicks
             Coordinate click = board.getClick();
@@ -85,30 +111,7 @@ public class CatchGame {
 
 
 
-            //  *** DALEKS CRASH WITH EACH OTHER ***
-            if (dalek1.getRow() == dalek2.getRow() && dalek1.getCol() == dalek2.getCol()) {
-                //make crash site red
-                board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
 
-                dalek1.crash();
-                dalek2.crash();
-            }
-
-            if (dalek1.getRow() == dalek3.getRow() && dalek1.getCol() == dalek3.getCol()) {
-                //make crash site red
-                board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
-
-                dalek1.crash();
-                dalek3.crash();
-            }
-
-            if (dalek3.getRow() == dalek2.getRow() && dalek3.getCol() == dalek2.getCol()) {
-                //make crash site red
-                board.putPeg(Color.RED, dalek3.getRow(), dalek3.getCol());
-
-                dalek3.crash();
-                dalek2.crash();
-            }
 
             // *** DOCTOR CRASHES WITH DALEKS ***
             if (doctor.getRow() == dalek1.getRow() && doctor.getCol() == dalek1.getCol()) {
