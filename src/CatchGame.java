@@ -61,7 +61,7 @@ public class CatchGame {
                 board.putPeg(Color.yellow, doctor.getRow(), doctor.getCol());
                 break;
             }
-
+            
             //register clicks
             Coordinate click = board.getClick();
             int clickRow = click.getRow();
