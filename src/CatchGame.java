@@ -26,11 +26,13 @@ public class CatchGame {
      * (create people, set positions, etc.)
      */
     public CatchGame() {
-        this.board = board;
-        this.dalek1 = dalek1;
-        this.dalek2 = dalek2;
-        this.dalek3 = dalek3;
-        this.doctor = doctor;
+        //make doctor
+        board.putPeg(Color.GREEN, doctor.getRow(), doctor.getCol());
+
+        //make dalek pegs
+        board.putPeg(Color.BLACK, dalek1.getRow(), dalek1.getCol());
+        board.putPeg(Color.BLACK, dalek2.getRow(), dalek2.getCol());
+        board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
 
     }
 
@@ -41,20 +43,12 @@ public class CatchGame {
     public void playGame() {
         while (true) {
 
-            //make doctor
-            board.putPeg(Color.GREEN, doctor.getRow(), doctor.getCol());
-
-            //make dalek pegs
-            board.putPeg(Color.BLACK, dalek1.getRow(), dalek1.getCol());
-            board.putPeg(Color.BLACK, dalek2.getRow(), dalek2.getCol());
-            board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
 
 
             //  *** DALEKS CRASH WITH EACH OTHER ***
             if (dalek1.getRow() == dalek2.getRow() && dalek1.getCol() == dalek2.getCol()) {
                 //make crash site red
                 board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
-
                 //set daleks crash
                 dalek1.crash();
                 dalek2.crash();
@@ -63,33 +57,24 @@ public class CatchGame {
             if (dalek1.getRow() == dalek3.getRow() && dalek1.getCol() == dalek3.getCol()) {
                 //make crash site red
                 board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
-
-
                 dalek1.crash();
                 dalek3.crash();
-
             }
 
             if (dalek3.getRow() == dalek2.getRow() && dalek3.getCol() == dalek2.getCol()) {
                 //make crash site red
                 board.putPeg(Color.RED, dalek3.getRow(), dalek3.getCol());
-
                 dalek3.crash();
                 dalek2.crash();
             }
 
-
-            //Did Doctor win Game??
-            if (dalek1.hasCrashed() && dalek2.hasCrashed() && dalek3.hasCrashed()) {
-                board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
-                board.displayMessage("        YOU WON!!!!");
-                break;
-            }
-
+            
             //register clicks
             Coordinate click = board.getClick();
             int clickRow = click.getRow();
             int clickCol = click.getCol();
+
+            
 
             //remove old peg
             board.removePeg(doctor.getRow(), doctor.getCol());
@@ -107,7 +92,6 @@ public class CatchGame {
             //put new dalek pegs down
             board.putPeg(Color.BLACK, dalek1.getRow(), dalek1.getCol());
 
-
             //MOVE DALEK 2
             //remove dalek pegs
             board.removePeg(dalek2.getRow(), dalek2.getCol());
@@ -116,7 +100,6 @@ public class CatchGame {
             //put new dalek pegs down
             board.putPeg(Color.BLACK, dalek2.getRow(), dalek2.getCol());
 
-
             //MOVE DALEK 3
             //remove dalek pegs
             board.removePeg(dalek3.getRow(), dalek3.getCol());
@@ -124,6 +107,14 @@ public class CatchGame {
             dalek3.advanceTowards(doctor);
             //put new dalek pegs down
             board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
+
+            //Did Doctor win Game??
+            if (dalek1.hasCrashed() && dalek2.hasCrashed() && dalek3.hasCrashed()) {
+                board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
+                board.displayMessage("        YOU WON!!!!");
+                break;
+            }
+            
 
             // *** DOCTOR CRASHES WITH DALEKS ***
             if (doctor.getRow() == dalek1.getRow() && doctor.getCol() == dalek1.getCol()) {
@@ -149,8 +140,6 @@ public class CatchGame {
                 board.displayMessage("                              GAME OVER");
                 break;
             }
-
-
         }
     }
 }
