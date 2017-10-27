@@ -43,7 +43,12 @@ public class CatchGame {
     public void playGame() {
         while (true) {
 
-
+            //Did Doctor win Game??
+            if (dalek1.hasCrashed() && dalek2.hasCrashed() && dalek3.hasCrashed()) {
+                board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
+                board.displayMessage("        YOU WON!!!!");
+                break;
+            }
 
             //  *** DALEKS CRASH WITH EACH OTHER ***
             if (dalek1.getRow() == dalek2.getRow() && dalek1.getCol() == dalek2.getCol()) {
@@ -68,21 +73,17 @@ public class CatchGame {
                 dalek2.crash();
             }
 
-            
             //register clicks
             Coordinate click = board.getClick();
             int clickRow = click.getRow();
             int clickCol = click.getCol();
 
-            
-
-            //remove old peg
+            //REMOVE old DOCTOR peg
             board.removePeg(doctor.getRow(), doctor.getCol());
             //make doctor move
             doctor.move(clickRow, clickCol);
             //put peg where doctor moved
             board.putPeg(Color.GREEN, doctor.getRow(), doctor.getCol());
-
 
             //MOVE DALEK 1
             //remove dalek pegs
@@ -108,13 +109,6 @@ public class CatchGame {
             //put new dalek pegs down
             board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
 
-            //Did Doctor win Game??
-            if (dalek1.hasCrashed() && dalek2.hasCrashed() && dalek3.hasCrashed()) {
-                board.putPeg(Color.RED, dalek1.getRow(), dalek1.getCol());
-                board.displayMessage("        YOU WON!!!!");
-                break;
-            }
-            
 
             // *** DOCTOR CRASHES WITH DALEKS ***
             if (doctor.getRow() == dalek1.getRow() && doctor.getCol() == dalek1.getCol()) {
@@ -140,6 +134,9 @@ public class CatchGame {
                 board.displayMessage("                              GAME OVER");
                 break;
             }
+
+
+
         }
     }
 }
