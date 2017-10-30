@@ -15,17 +15,22 @@ public class CatchGame {
     //new board
     private Board board = new Board(12, 12);
     //spawn random daleks
-    private Dalek dalek1 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
-    private Dalek dalek2 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
-    private Dalek dalek3 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
+    private Dalek dalek1;
+    private Dalek dalek2;
+    private Dalek dalek3;
     //spawn Doctor
-    private Doctor doctor = new Doctor((int) (Math.random() * 12), (int) (Math.random() * 12));
+    private Doctor doctor;
 
     /**
      * The constructor for the game. Use it to initialize your game variables.
      * (create people, set positions, etc.)
      */
     public CatchGame() {
+        dalek1 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
+        dalek2 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
+        dalek3 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
+        
+        doctor = new Doctor((int) (Math.random() * 12), (int) (Math.random() * 12));
         //make doctor
         board.putPeg(Color.GREEN, doctor.getRow(), doctor.getCol());
 
@@ -47,18 +52,21 @@ public class CatchGame {
             if (doctor.getRow() == dalek1.getRow() && doctor.getCol() == dalek1.getCol()) {
                 board.removePeg(doctor.getRow(), doctor.getCol());
                 board.putPeg(Color.yellow, doctor.getRow(), doctor.getCol());
+                board.displayMessage("                              GAME OVER");
                 break;
             }
 
             if (doctor.getRow() == dalek2.getRow() && doctor.getCol() == dalek2.getCol()) {
                 board.removePeg(doctor.getRow(), doctor.getCol());
                 board.putPeg(Color.yellow, doctor.getRow(), doctor.getCol());
+                board.displayMessage("                              GAME OVER");
                 break;
             }
 
             if (doctor.getRow() == dalek3.getRow() && doctor.getCol() == dalek3.getCol()) {
                 board.removePeg(doctor.getRow(), doctor.getCol());
                 board.putPeg(Color.yellow, doctor.getRow(), doctor.getCol());
+                board.displayMessage("                              GAME OVER");
                 break;
             }
             
