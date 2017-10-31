@@ -29,7 +29,7 @@ public class CatchGame {
         dalek1 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
         dalek2 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
         dalek3 = new Dalek((int) (Math.random() * 12), (int) (Math.random() * 12));
-        
+
         doctor = new Doctor((int) (Math.random() * 12), (int) (Math.random() * 12));
         //make doctor
         board.putPeg(Color.GREEN, doctor.getRow(), doctor.getCol());
@@ -40,6 +40,7 @@ public class CatchGame {
         board.putPeg(Color.BLACK, dalek3.getRow(), dalek3.getCol());
 
 
+
     }
 
     /**
@@ -48,6 +49,8 @@ public class CatchGame {
      */
     public void playGame() {
         while (true) {
+
+
             //If doctor spawns on dalek
             if (doctor.getRow() == dalek1.getRow() && doctor.getCol() == dalek1.getCol()) {
                 board.removePeg(doctor.getRow(), doctor.getCol());
@@ -69,7 +72,7 @@ public class CatchGame {
                 board.displayMessage("                              GAME OVER");
                 break;
             }
-            
+
             //register clicks
             Coordinate click = board.getClick();
             int clickRow = click.getRow();
@@ -128,6 +131,7 @@ public class CatchGame {
                 dalek3.crash();
                 dalek2.crash();
             }
+
 
             // *** DOCTOR CRASHES WITH DALEKS ***
             if (doctor.getRow() == dalek1.getRow() && doctor.getCol() == dalek1.getCol()) {
