@@ -46,7 +46,7 @@ public class Doctor {
             this.row = newRow;
             this.col = newCol;
         } //else teleport doctor using math.random
-        else {
+        else{
             this.row = (int) (Math.random() * 12);
             this.col = (int) (Math.random() * 12);
         }
